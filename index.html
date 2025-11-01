@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Play Marshmallow.Projects puzzle beta, win vouchers and claim via DM. University student brand awareness program." />
+  <title>Marshmallow.Projects — Play & Claim (Beta)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+  <div class="brand">
+  <img src="Assets/logo.svg" alt="Marshmallow logo" class="logo" />
+        <div class="brand-text">
+          <strong class="brand-name">Marshmallow.Projects</strong>
+          <span class="product">Play & Claim</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="beta">BETA</span>
+        <!-- Theme toggle placed here -->
+        <button id="themeToggle" class="btn ghost" aria-pressed="false" title="Toggle dark mode">🌙</button>
+        <nav class="nav">
+          <a href="#how" class="nav-link">How it works</a>
+          <a href="#play" class="nav-link">Play</a>
+          <a href="#voucher" class="nav-link">Voucher</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <h1>Play quick puzzles. Win vouchers. Claim via DM.</h1>
+          <p class="lead">Join the Marshmallow.Projects beta for university students — request a play code via DM, play games, and increase your voucher value when you win.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#play">Start Playing</a>
+            <a class="btn ghost" href="#how">How it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="how" class="instructions card">
+        <h2>How it works</h2>
+        <ol>
+          <li>DM <strong>@Marshmallow.Projects</strong> on Instagram or Facebook and request a play code.</li>
+          <li>Enter the code below and choose a game. Keep your code private when claiming.</li>
+          <li>Win rounds to increase your voucher value; mistakes reduce it. Max voucher value: <strong>100 QAR</strong>.</li>
+          <li>Screenshot any win, post to feed & story tagging <strong>@Marshmallow.Projects</strong>, then DM us the screenshot + your handle to claim.</li>
+        </ol>
+      </section>
+
+      <!-- Game stage: full-width area directly below the instructions card -->
+      <section id="gameStage" class="card game-stage" style="display:none">
+        <h2>Game</h2>
+        <div id="gameArea" class="game-area" aria-live="polite"></div>
+      </section>
+
+      <section id="play" class="play card">
+        <h2>Play</h2>
+        <div class="play-inner">
+          <div class="controls">
+            <label for="codeInput">Enter play code (ask us in DM):</label>
+            <input id="codeInput" type="text" placeholder="Enter code you received in DM" />
+            <div class="row">
+              <button id="validateBtn" class="btn">Validate Code</button>
+              <p id="codeStatus" class="status">Status: waiting for code</p>
+            </div>
+
+            <label for="gameSelect">Choose a game:</label>
+            <select id="gameSelect" disabled>
+              <option value="">-- validate code first --</option>
+              <option value="memory">Match & Win (Memory)</option>
+              <option value="trivia">Trivia Hunt</option>
+            </select>
+            <button id="startBtn" class="btn" disabled>Start Game</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="voucher" class="voucher card">
+        <h2>Your Voucher</h2>
+        <p class="voucher-amount">Current voucher value: <span id="voucherValue">0</span> QAR</p>
+        <div class="actions">
+          <button id="claimBtn" class="btn primary" disabled>Claim — DM us</button>
+          <a id="dmIg" href="https://instagram.com/Marshmallow.Projects" target="_blank" rel="noopener" class="link">DM on Instagram</a>
+          <a id="dmFb" href="https://facebook.com/Marshmallow.Projects" target="_blank" rel="noopener" class="link">DM on Facebook</a>
+        </div>
+
+        <div class="ugc">
+          <h3>UGC / Screenshot Template</h3>
+          <textarea id="ugcText" readonly rows="4"></textarea>
+          <p>Copy and paste this caption when posting your win. Don't forget to tag <strong>@Marshmallow.Projects</strong>.</p>
+          <button id="copyUgc" class="btn ghost">Copy Caption</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer pro-footer">
+    <div class="container small">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <img src="Assets/logo.svg" alt="Marshmallow.Projects logo" class="footer-logo" />
+          <span class="footer-title">Marshmallow.Projects</span>
+        </div>
+        <div class="footer-socials">
+          <a href="https://wa.me/97460000000" class="footer-link wa" target="_blank" rel="noopener" title="WhatsApp Recruitment Channel" aria-label="WhatsApp Recruitment Channel">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.967-.94 1.166-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.71.306 1.263.489 1.695.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/></svg>
+            <span>WhatsApp (Recruitment)</span>
+          </a>
+          <a href="https://facebook.com/Marshmallow.Projects" class="footer-link fb" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877F3"/><path d="M15.117 8.667h-1.25V7.75c0-.3.2-.367.34-.367h.89V5.5h-1.22c-1.35 0-1.66.983-1.66 1.615v1.552h-1V10.5h1v4h2v-4h1.09l.16-1.833z" fill="#fff"/></svg>
+            <span>Facebook</span>
+          </a>
+          <a href="https://instagram.com/Marshmallow.Projects" class="footer-link ig" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#E1306C"/><path d="M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 7.5a3 3 0 110-6 3 3 0 010 6zm4.5-7.75a1 1 0 11-2 0 1 1 0 012 0z" fill="#fff"/><path d="M17.5 8.5a5.5 5.5 0 00-5.5-5.5h-1a5.5 5.5 0 00-5.5 5.5v1a5.5 5.5 0 005.5 5.5h1a5.5 5.5 0 005.5-5.5v-1zm-1 1a4.5 4.5 0 01-4.5 4.5h-1a4.5 4.5 0 01-4.5-4.5v-1a4.5 4.5 0 014.5-4.5h1a4.5 4.5 0 014.5 4.5v1z" fill="#fff"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://x.com/MarshmallowProjs" class="footer-link x" target="_blank" rel="noopener" title="X (Twitter)" aria-label="X (Twitter)">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#000"/><path d="M16.5 7.5h-1.1l-2.4 2.9-2.4-2.9H7.5l3.1 3.7-3.1 3.8h1.1l2.4-2.9 2.4 2.9h1.1l-3.1-3.8 3.1-3.7z" fill="#fff"/></svg>
+            <span>X</span>
+          </a>
+          <a href="https://github.com/Marshmallow-Projects" class="footer-link gh" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#181717"/><path d="M12 6.3c-3.2 0-5.7 2.5-5.7 5.7 0 2.5 1.6 4.6 3.8 5.3.3.1.4-.1.4-.3v-1.1c-1.6.3-2-.4-2-.4-.3-.7-.7-.9-.7-.9-.6-.4 0-.4 0-.4.7 0 1 .7 1 .7.6 1 1.6.7 2 .5.1-.4.2-.7.4-.8-1.3-.1-2.7-.7-2.7-3 0-.7.2-1.2.6-1.7-.1-.2-.3-.8.1-1.6 0 0 .5-.2 1.7.6.5-.1 1-.2 1.5-.2s1 .1 1.5.2c1.2-.8 1.7-.6 1.7-.6.4.8.2 1.4.1 1.6.4.5.6 1 .6 1.7 0 2.3-1.4 2.9-2.7 3 .2.2.4.5.4 1.1v1.6c0 .2.1.4.4.3 2.2-.7 3.8-2.8 3.8-5.3 0-3.2-2.5-5.7-5.7-5.7z" fill="#fff"/></svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer-note">
+        <small>Marshmallow.Projects — Brand Awareness Beta • For university students • Do not share codes publicly.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
